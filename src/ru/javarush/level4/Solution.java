@@ -1280,11 +1280,50 @@ public class Solution {
                 System.out.println(list.get(i));
                 break;
             } else  if (list.get(i).length() == min) {
-                System.out.println("Самый короткий элемент в списке: " + list.get(i));
+                System.out.println(list.get(i));
             }
         }
 
 
+    }
+
+    public static void Jolushka() throws IOException {
+        ArrayList<Integer> list = new ArrayList<>();
+        ArrayList<Integer> list1 = new ArrayList<>();
+        ArrayList<Integer> list2 = new ArrayList<>();
+        ArrayList<Integer> list3 = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        for (int i = 0; i < 20 ; i++) {
+            int N = Integer.parseInt(reader.readLine());
+            list.add(N);
+        }
+
+        for (int i = 0; i < list.size() ; i++) {
+            if (list.get(i) % 3 == 0) {
+                list1.add(list.get(i));
+            }
+
+            if (list.get(i) % 2 == 0) {
+                list2.add(list.get(i));
+            }
+
+            if (list.get(i) % 3 != 0 && list.get(i) % 2 != 0) {
+                list3.add(list.get(i));
+            }
+
+            if (list.get(i) % 3 == 0 && list.get(i) % 2 == 0) {
+                list1.add(list.get(i));
+                list2.add(list.get(i));
+            }
+        }
+
+    }
+
+    public static void printList(ArrayList<Integer> list) {
+        for (int i = 0; i < list.size() ; i++) {
+            System.out.println(list.get(i));
+        }
     }
 
 

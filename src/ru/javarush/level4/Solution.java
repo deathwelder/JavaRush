@@ -1240,6 +1240,51 @@ public class Solution {
             String N = reader.readLine();
             list.add(N);
         }
+
+        for (int i = 0; i < 13 ; i++) {
+            list.remove(list.size() - 1);
+            list.add(0, list.get(list.size() - 1));
+        }
+
+        for (int i = 0; i < list.size() ; i++) {
+            System.out.println(list.get(i));
+        }
+    }
+    
+    
+    public static void VeryVery() throws IOException {
+        ArrayList<String> list = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        for (int i = 0; i < 10; i++) {
+            String N = reader.readLine();
+            list.add(N);
+        }
+
+        int max = list.get(0).length();
+        for (int i = 0; i < list.size() ; i++) {
+            if (list.get(i).length() > max) {
+                max = list.get(i).length();
+            }
+        }
+
+        int min = list.get(0).length();
+        for (int i = 0; i < list.size() ; i++) {
+            if (list.get(i).length() < min) {
+                min = list.get(i).length();
+            }
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).length() == max) {
+                System.out.println(list.get(i));
+                break;
+            } else  if (list.get(i).length() == min) {
+                System.out.println("Самый короткий элемент в списке: " + list.get(i));
+            }
+        }
+
+
     }
 
 

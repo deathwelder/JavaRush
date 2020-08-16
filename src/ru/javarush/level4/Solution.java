@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -1312,17 +1313,221 @@ public class Solution {
                 list3.add(list.get(i));
             }
 
-            if (list.get(i) % 3 == 0 && list.get(i) % 2 == 0) {
-                list1.add(list.get(i));
-                list2.add(list.get(i));
-            }
+
         }
+
+        System.out.println();
+
+        System.out.println();
 
     }
 
     public static void printList(ArrayList<Integer> list) {
         for (int i = 0; i < list.size() ; i++) {
-            System.out.println(list.get(i));
+            System.out.print(list.get(i) + " ");
+        }
+    }
+
+    public static void ReverseWords() throws IOException {
+        ArrayList<String> list = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        for (int i = 0; i < 5; i++) {
+            String N = reader.readLine();
+            list.add(N);
+        }
+        
+        list.remove(2);
+        for (int i = 0; i < 4; i++) {
+            System.out.println(list.get(3 - i));
+        }
+    }
+
+    public static ArrayList<String> fix(ArrayList<String> strings) {
+        for (int i = 0; i <strings.size() ; i++) {
+            if (strings.get(i).contains("л") && strings.get(i).contains("р")) {
+                continue;
+            }
+            else if (strings.get(i).contains("р")){
+                strings.remove(i);
+                i--;
+            }
+            else if (strings.get(i).contains("л")){
+                strings.add(i + 1 , strings.get(i));
+                i+=2;
+            }
+
+        }
+        return strings;
+    }
+
+    public static ArrayList<String> doubleValues(ArrayList<String> list) {
+        for (int i = 0; i < list.size(); i++) {
+            list.add(i, list.get(i));
+            i++;
+        }
+        return list;
+    }
+
+    public static void RefractionMassive() throws IOException {
+        ArrayList<String> list = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(reader.readLine());
+        int M = Integer.parseInt(reader.readLine());
+
+        for (int i = 0; i < N; i++) {
+            String str = reader.readLine();
+            list.add(str);
+        }
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i) + " ");
+        }
+            System.out.println();
+        for (int i = 0; i < M ; i++) {
+            list.add(list.get(0));
+            list.remove(0);
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i) + " ");
+        }
+    }
+
+    public static int[] getInts() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int[] arr = new int[20];
+
+        for (int i = 0; i < 20 ; i++) {
+            int N = Integer.parseInt(reader.readLine());
+            arr[i] = N;
+
+        }
+        return arr;
+    }
+
+    public static void MinMax(int[] arr) {
+        int max = arr[0];
+        int min = arr[0];
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+        System.out.println(max);
+        System.out.println(min);
+    }
+
+    public static void InTheEnd() throws IOException {
+        ArrayList<String> List = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        while (true) {
+            if (List.contains("end")) {
+                List.remove("end");
+                break;
+            }
+            String STOP = reader.readLine();
+            List.add(STOP);
+        }
+
+        for (int i = 0; i < List.size() ; i++) {
+            System.out.println(List.get(i));
+        }
+    }
+
+    public static class Human {
+        String name;
+        boolean sex;
+        int age;
+        Human father;
+        Human mother;
+
+        public Human(String name, boolean sex, int age, Human father, Human mother) {
+            this.name = name;
+            this.sex = sex;
+            this.age = age;
+            this.father = father;
+            this.mother = mother;
+        }
+
+        public Human(String name, boolean sex, int age) {
+            this.name = name;
+            this.sex = sex;
+            this.age = age;
+        }
+
+        public String toString() {
+            String text = "";
+            text += "Имя: " + this.name;
+            text += ", пол: " + (this.sex ? "мужской" : "женский");
+            text += ", возраст: " + this.age;
+
+            if (this.father != null) {
+                text += ", отец: " + this.father.name;
+            }
+
+            if (this.mother != null) {
+                text += ", мать: " + this.mother.name;
+            }
+
+            return text;
+        }
+    }
+    public final static ArrayList<MainClass.Cat> CATS = new ArrayList<>();
+    public static void cats() throws IOException{
+
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        while (true) {
+            String name = reader.readLine();
+            String age = reader.readLine();
+            String weight = reader.readLine();
+            String tailLength = reader.readLine();
+
+            if ((name == null || name.isEmpty()) || (age == null || age.isEmpty()) || (weight == null || weight.isEmpty()) || (tailLength == null || tailLength.isEmpty())) {
+                break;
+            }
+
+
+            MainClass.Cat cat = new MainClass.Cat(name, Integer.parseInt(age), Integer.parseInt(weight), Integer.parseInt(tailLength));
+            CATS.add(cat);
+        }
+
+        printList();
+    }
+
+    public static void printList() {
+        for (int i = 0; i < CATS.size(); i++) {
+            System.out.println(CATS.get(i));
+        }
+    }
+
+    public static class Cat2 {
+        private String name;
+        private int age;
+        private int weight;
+        private int tailLength;
+
+        Cat2(String name, int age, int weight, int tailLength) {
+            this.name = name;
+            this.age = age;
+            this.weight = weight;
+            this.tailLength = tailLength;
+        }
+
+        Cat2(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return "Cat's name: " + name + ", age: " + age + ", weight: " + weight + ", tail: " + tailLength;
         }
     }
 

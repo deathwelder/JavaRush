@@ -4,10 +4,7 @@ import javax.xml.namespace.QName;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Solution {
 
@@ -1478,7 +1475,7 @@ public class Solution {
             return text;
         }
     }
-    public final static ArrayList<MainClass.Cat> CATS = new ArrayList<>();
+    public final static ArrayList<Cat2> CATS = new ArrayList<>();
     public static void cats() throws IOException{
 
 
@@ -1495,7 +1492,7 @@ public class Solution {
             }
 
 
-            MainClass.Cat cat = new MainClass.Cat(name, Integer.parseInt(age), Integer.parseInt(weight), Integer.parseInt(tailLength));
+            Cat2 cat = new Cat2(name, Integer.parseInt(age), Integer.parseInt(weight), Integer.parseInt(tailLength));
             CATS.add(cat);
         }
 
@@ -1531,7 +1528,90 @@ public class Solution {
         }
     }
 
+    public static void ChangeFunc() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
+        ArrayList<String> strings = new ArrayList<String>();
+        while (true) {
+            String string = reader.readLine();
+            if (string == null || string.isEmpty()) break;
+            strings.add(string);
+        }
 
-}
+        ArrayList<String> resultStrings = new ArrayList<String>();
+        for (int i = 0; i < strings.size(); i++) {
+            if (strings.get(i).length() % 2 == 0) {
+                resultStrings.add(strings.get(i));
+                resultStrings.add(strings.get(i));
+            }
+
+            if (strings.get(i).length() % 2 != 0) {
+                resultStrings.add(strings.get(i));
+                resultStrings.add(strings.get(i));
+                resultStrings.add(strings.get(i));
+            }
+        }
+
+        for (int i = 0; i < resultStrings.size(); i++) {
+            System.out.println(resultStrings.get(i));
+        }
+    }
+
+    public static void SortArray() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int[] array = new int[20];
+        for (int i = 0; i < 20; i++) {
+            array[i] = Integer.parseInt(reader.readLine());
+        }
+
+        sort(array);
+
+        for (int x : array) {
+            System.out.println(x);
+        }
+    }
+
+    public static void sort(int[] array) {
+        boolean sorted = false;
+        int temp1;
+        while(!sorted) {
+            sorted = true;
+            for (int i = 0; i < array.length - 1; i++) {
+                if (array[i] > array[i+1]) {
+                    temp1 = array[i];
+                    array[i] = array[i+1];
+                    array[i+1] = temp1;
+                    sorted = false;
+                }
+            }
+        }
+
+        for( int i = 0; i < array.length/2; ++i )
+        {
+            int temp = array[i];
+            array[i] = array[array.length - i - 1];
+            array[array.length - i - 1] = temp;
+        }
+    }
+
+    public static void TestMap() {
+        Map<String, String> map1 = new HashMap<>();
+        map1.put("арбуз", "ягода");
+        map1.put("банан", "трава");
+        map1.put("вишня", "ягода");
+        map1.put("груша", "фрукт");
+        map1.put("дыня", "овощ");
+        map1.put("ежевика", "куст");
+        map1.put("жень-шень", "корень");
+        map1.put("земляника", "ягода");
+        map1.put("ирис", "цветок");
+        map1.put("картофель", "клубень");
+
+        map1.forEach((k, v) -> {
+            System.out.println(k + " " + "-" + " " + v);
+        });
+    }
+
+    }
+
 

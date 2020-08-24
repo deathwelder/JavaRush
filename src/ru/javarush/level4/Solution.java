@@ -1612,6 +1612,94 @@ public class Solution {
         });
     }
 
+    public static Map<String, Cat> addCatsToMap(String[] cats) {
+        Map<String, Cat> cat1 = new HashMap<>();
+        for (String s : cats) {
+         //   cat1.put(s, new Cat(s));
+        }
+
+        return cat1;
+    }
+
+    public static void TenThousand() {
+        // ArrayList
+        ArrayList arrayList = new ArrayList();
+        insert10000(arrayList);
+        get10000(arrayList);
+        set10000(arrayList);
+        remove10000(arrayList);
+
+        // LinkedList
+        LinkedList linkedList = new LinkedList();
+        insert10000(linkedList);
+        get10000(linkedList);
+        set10000(linkedList);
+        remove10000(linkedList);
+
+
+    }
+    public static void insert10000(List list) {
+        int i = 0;
+        while(i < 10000) {
+            list.add(i, new Object());
+            i++;
+        }
+    }
+
+    public static void get10000(List list) {
+        int i = 0;
+        while(i < 10000) {
+            list.get(i);
+            i++;
+        }
+
+    }
+
+    public static void set10000(List list) {
+        int i = 0;
+        while(i < 10000) {
+            list.set(i, new Object());
+            i++;
+        }
+
+    }
+
+    public static void remove10000(List list) {
+        int i = 0;
+        while(i < 10000) {
+            list.remove(0);
+            i++;
+        }
+    }
+
+    public static void LongSequence() throws IOException {
+        List<Integer> list = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int count = 1;
+        int unCount = 1;
+
+
+        for (int i = 0; i < 10 ; i++) {
+            int N = Integer.parseInt(reader.readLine());
+            list.add(N);
+        }
+
+        for (int i = 0; i < list.size() - 1 ; i++) {
+
+            if ( list.get(i).equals(list.get(i + 1)) ) {
+                count++;
+            } else count = 1;
+
+            if (count > unCount) {
+                unCount = count;
+
+            }
+
+        }
+
+        System.out.println(unCount);
+    }
+
     }
 
 

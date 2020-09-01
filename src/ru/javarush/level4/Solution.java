@@ -1700,6 +1700,149 @@ public class Solution {
         System.out.println(unCount);
     }
 
+    public static Set<Integer> removeAllNumbersGreaterThan10(Set<Integer> set) {
+
+        Iterator<Integer> it = set.iterator();
+        while (it.hasNext()) {
+            Integer text = it.next();
+            if(text > 10)
+            {
+                it.remove();
+            }
+        }
+        return set;
     }
+
+        public static int getCountTheSameFirstName(Map<String, String> map, String name) {
+            //напишите тут ваш код
+            int count = 0;
+            for (Map.Entry<String, String> item : map.entrySet()) {
+                if (item.getValue().equals(name)) {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+
+        public static int getCountTheSameLastName(Map<String, String> map, String lastName) {
+            //напишите тут ваш код
+            int count1 = 0;
+            for (Map.Entry<String, String> item : map.entrySet()) {
+                if (item.getKey().equals(lastName)) {
+                    count1++;
+                }
+            }
+            return count1;
+        }
+
+    public static void removeTheFirstNameDuplicates(Map<String, String> map) {
+        ArrayList<String> values = new ArrayList<String>(); //создаём лист значений
+        ArrayList<String> valuesDuplicates = new ArrayList<String>(); //создаём лист для повторяющихся значений
+
+        Iterator<String> iterator = map.values().iterator(); // создаём итератор для map
+
+        while (iterator.hasNext()) { //пока итератор имеет следующую позицию
+
+            String nameCheckDupl = iterator.next(); // к переменной типа стринг присваеваем значение итератора
+
+            if (values.contains(nameCheckDupl)) { //
+                valuesDuplicates.add(nameCheckDupl);
+            } else {
+                values.add(nameCheckDupl);
+            }
+        }
+
+        for (int j = 0; j < valuesDuplicates.size(); j++) {
+
+            String val = valuesDuplicates.get(j);
+            removeItemFromMapByValue(map, val);
+        }
+    }
+
+
+
+    public static void removeItemFromMapByValue(Map<String, String> map, String value) {
+        Map<String, String> copy = new HashMap<>(map);
+        for (Map.Entry<String, String> pair : copy.entrySet()) {
+            if (pair.getValue().equals(value)) {
+                map.remove(pair.getKey());
+            }
+        }
+    }
+
+    public static void removeItemFromMap(Map<String, Integer> map) {
+        Iterator<Map.Entry<String, Integer>> iterator = map.entrySet().iterator();
+        while (iterator.hasNext()){
+            Map.Entry<String, Integer> pair = iterator.next();
+            if (pair.getValue() < (Integer) 500){
+                iterator.remove();
+            }
+        }
+    }
+
+    public static void printCats(Set<Object> cats) {
+        Iterator<Object> it = cats.iterator();
+        while(it.hasNext()){
+
+            System.out.println(it.next());
+        }
+
+    }
+
+    public static void removeCats(Set<Object> pets, Set<Object> cats) {
+        Set<Object> copy = new HashSet<Object>(pets);
+        pets.removeAll(cats);
+    }
+
+    public static void SearchCity() throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        List<String> list = new ArrayList<>();
+        while (true) {
+            String family = reader.readLine();
+            if (family.isEmpty()) {
+                break;
+            }
+
+            list.add(family);
+        }
+
+        String city = reader.readLine();
+        for (int i = 0; i <list.size(); i++) {
+            if(list.get(i).equals(city)){
+                System.out.println(list.get(i+1));
+                break;
+            }
+            continue;
+        }
+    }
+
+    public static void upperFirstChar() throws IOException{
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String string = reader.readLine();
+        string.trim();
+        ArrayList<Character> upperMass = new ArrayList<>();
+        int len = string.length();
+        char[] result = string.toCharArray();
+        Character.toUpperCase(string.charAt(1));
+        upperMass.add(Character.toUpperCase(result[0]));
+        for (int i = 1; i < len; i++) {
+            int j = 0;
+            if (string.charAt(i - 1) == ' ') {
+                upperMass.add(Character.toUpperCase(result[i]));
+            }  else upperMass.add(result[i]);
+        }
+
+
+        for (int i = 0; i < upperMass.size() ; i++) {
+            System.out.print(upperMass.get(i));
+        }
+
+    }
+    }
+
+
+
+
 
 
